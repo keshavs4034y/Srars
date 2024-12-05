@@ -1,0 +1,73 @@
+<p>// Your API Key</p>
+
+<p>const apiKey = "d176e6667dff62e31814d7a603448e2a";</p>
+
+<p> </p>
+
+<p>// SMM Galaxy API Base URL</p>
+
+<p>const baseUrl = "https://smmgalaxy.com/api/v2";</p>
+
+<p> </p>
+
+<p>// Fetch services from SMM Galaxy API</p>
+
+<p>document.getElementById('fetchServices').addEventListener('click', () => {</p>
+
+<p>    const endpoint = `${baseUrl}/services`;</p>
+
+<p> </p>
+
+<p>    // Parameters</p>
+
+<p>    const params = new URLSearchParams({</p>
+
+<p>        key: apiKey</p>
+
+<p>    });</p>
+
+<p> </p>
+
+<p>    // Display loading text</p>
+
+<p>    document.getElementById('responseOutput').textContent = "Fetching data, please wait...";</p>
+
+<p> </p>
+
+<p>    // API Call</p>
+
+<p>    fetch(`${endpoint}?${params}`, {</p>
+
+<p>        method: "GET"</p>
+
+<p>    })</p>
+
+<p>    .then(response => {</p>
+
+<p>        if (!response.ok) {</p>
+
+<p>            throw new Error(`Error: ${response.status}`);</p>
+
+<p>        }</p>
+
+<p>        return response.json();</p>
+
+<p>    })</p>
+
+<p>    .then(data => {</p>
+
+<p>        // Display response in a formatted manner</p>
+
+<p>        document.getElementById('responseOutput').textContent = JSON.stringify(data, null, 2);</p>
+
+<p>    })</p>
+
+<p>    .catch(error => {</p>
+
+<p>        // Display error message</p>
+
+<p>        document.getElementById('responseOutput').textContent = `Error: ${error.message}`;</p>
+
+<p>    });</p>
+
+<p>});</p>
